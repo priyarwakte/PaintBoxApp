@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+participant CanvasGui
+participant CanvasGuiController
+participant shapeComponent
+participant commandInterface
+participant shapeGroup
+participant Box
+participant Circle
+
+CanvasGuiController-> shapeComponent
+shapeComponent -> Circle
+Circle --> shapeComponent
+shapeComponent->shapeGroup
+CanvasGuiController-> shapeComponent
+shapeComponent -> Box
+Box --> shapeComponent
+CanvasGui-->shapeComponent:actionPerformed:undo()
+shapeComponent -> commandInterface
+commandInterface-->shapeComponent
+shapeComponent -> shapeGroup
+CanvasGui-->shapeComponent: actionPerformed:redo()
+shapeComponent -> commandInterface
+commandInterface-->shapeComponent
+shapeComponent -> shapeGroup
+
+
+
+
+
+
+
+
+
+
+
+@enduml
